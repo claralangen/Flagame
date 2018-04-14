@@ -1,0 +1,24 @@
+{
+  "name": "flagame",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"parcel src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claralangen/Flagame.git"
+  },
+  "author": "clara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/claralangen/Flagame/issues"
+  },
+  "homepage": "https://github.com/claralangen/Flagame#readme",
+  "devDependencies": {
+    "node-sass": "^4.8.3",
+    "parcel-bundler": "^1.7.0"
+  }
+}
