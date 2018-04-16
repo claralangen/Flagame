@@ -1,4 +1,4 @@
-export const flags = [
+const flags = [
  {
   "name": "Albania ",
   "code": "AL",

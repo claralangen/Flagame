@@ -3,7 +3,3 @@ src/.DS_Store
 .cache
 .idea
 src/.cache
-dist
-src/dist
-node_modules
-package-lock.json

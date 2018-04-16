@@ -1,8 +1,14 @@
-import '../styles/main.scss';
+const startButton= document.querySelector('#game-start button');
+const startScreen= document.querySelector('#game-start');
+const restartButton= document.querySelector('#game-over button');
 
-import 'data.js';
+startButton.addEventListener('click',function(){
+    startScreen.classList.remove('is-open');
+    startGame();
+});
 
-import './components/functions.js'
-import './components/startGame.js';
-import './components/generateFlags';
+restartButton.addEventListener('click',function(){
+    gameOverScreen.classList.remove('is-open');
+    startGame();
+});
 
