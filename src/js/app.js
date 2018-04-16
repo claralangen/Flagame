@@ -9,6 +9,14 @@ startButton.addEventListener('click',function(){
 
 restartButton.addEventListener('click',function(){
     gameOverScreen.classList.remove('is-open');
+    liveCounter = 3;
+
+    for (let i = 0; i < lives.length; i++) {
+        lives[i].classList.remove('is-active');
+    }
+    remainingTime.textContent = timeCounter;
+
     startGame();
+
 });
 

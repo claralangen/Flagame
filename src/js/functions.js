@@ -1,17 +1,24 @@
 const remainingTime = document.querySelector('.time span');
-const gameOverScreen= document.querySelector('#game-over');
+const gameOverScreen = document.querySelector('#game-over');
+const lives = document.querySelectorAll('.lives img');
 let countryName = document.querySelector('#game h2');
 let flagDivs = document.querySelectorAll('.flag');
 let flagImgs = document.querySelectorAll('.flag img');
 
+
 let timeCounter = 20;
 let intervalId;
+let liveCounter = 3;
+let random;
+let goodFlag;
+let allFlags;
 
 
 function gameOver() {
     gameOverScreen.classList.add('is-open');
     clearInterval(intervalId);
     timeCounter = 20;
+
 }
 
 function timer() {
@@ -24,7 +31,16 @@ function timer() {
         remainingTime.textContent = timeCounter;
 
 
-    },10000);
+    },1000);
+}
+
+function removeLife() {
+    if (liveCounter > 1) {
+        liveCounter--;
+        lives[liveCounter].classList.add('is-active');
+    }else  {
+        gameOver();
+    }
 }
 
 function shuffle(tab_to_shuffle) {
@@ -41,10 +57,8 @@ function shuffle(tab_to_shuffle) {
 }
 
 function generateFlags() {
-
-
-    let random = Math.floor(Math.random()* flags.length);
-    let goodFlag = flags[random];
+    random = Math.floor(Math.random()* flags.length);
+    goodFlag = flags[random];
 
     let remainFlags = flags.filter(function(flag) {
         return flag.name !== goodFlag.name;
@@ -62,7 +76,7 @@ function generateFlags() {
     console.log(colorFilter2);
     console.log(goodFlag);
 
-    let allFlags = colorFilter2.splice(0,3);
+    allFlags = colorFilter2.splice(0,3);
     allFlags.push(goodFlag);
     allFlags = shuffle(allFlags);
     console.log(allFlags);
@@ -75,12 +89,27 @@ function generateFlags() {
 
         flagDivs[i].classList.remove('is-active');
     }
+}
 
+function clickOnFlags(){
+    for (let i = 0; i < flagImgs.length; i++) {
+        flagImgs[i].addEventListener('click',function(){
+            if (allFlags[i].name === goodFlag.name) {
+                generateFlags();
+
+            } else {
+                removeLife();"w"
+                flagDivs[i].classList.add('is-active');
+            }
+        })
+
+    }
 }
 
 function startGame() {
     timer();
     generateFlags();
+    clickOnFlags();
 }
 
 
